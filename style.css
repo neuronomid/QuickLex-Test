@@ -182,42 +182,43 @@ pre {
   margin: 0;
   border-radius: 8px;
   font-family: 'Vazirmatn', sans-serif;
-  font-style: normal;
-  font-weight: 450;
   font-size: 16px;
-  line-height: 24px;
-  color: rgb(0, 0, 0);
+  line-height: 1.5;
   overflow-y: auto;
   white-space: pre-wrap;
-  transition: background .3s, color .3s;
+  transition: background .3s;
 }
 body.dark-mode pre {
   background: #444;
-  color: #f5f5f5;
 }
+
 pre span {
   display: block;
   margin-bottom: 8px;
   unicode-bidi: plaintext;
 }
 pre span.emoji-header {
-  font-weight: 450;
-  font-size: 16px;
+  font-size: 18px;
+  font-weight: 700;
 }
-pre span[dir="rtl"], pre span[dir="ltr"] {
+pre span[dir="rtl"] {
+  direction: rtl;
+  text-align: right;
   font-family: 'Vazirmatn', sans-serif;
-  font-weight: 450;
-  font-size: 16px;
-  line-height: 24px;
-  direction: inherit;
-  text-align: inherit;
+  font-weight: 400;
+}
+pre span[dir="ltr"] {
+  direction: ltr;
+  text-align: left;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 400;
 }
 
 /* 11) Responsive */
 @media (max-width:480px) {
   /* Increase mobile width for easier tapping */
-  .container { width: 96vw; height:90vh; padding:16px; box-shadow:none; }
-  .container.pro-mode { width: 96vw; height:108vh; }
+  .container { width: 96vw; height: 90vh; padding:16px; box-shadow:none; }
+  .container.pro-mode { width: 96vw; height: 108vh; }
   .logo { width:48px; height:48px; }
   .app-name { font-size:22px; }
   input[type="text"] { font-size:16px; }
