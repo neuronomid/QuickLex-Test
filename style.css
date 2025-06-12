@@ -1,11 +1,11 @@
 /* style.css */
 
-/* 1) محاسبه با box-sizing */
+/* Box sizing globally */
 *, *::before, *::after {
   box-sizing: border-box;
 }
 
-/* 2) فونت سیستم برای بدنه و Vazirmatn برای ورودی */
+/* Import Persian font */
 @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500&display=swap');
 
 html, body {
@@ -14,6 +14,7 @@ html, body {
 }
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 16px;
   background-color: #ffffff;
   color: #000000;
   transition: background-color .3s, color .3s;
@@ -23,7 +24,7 @@ body.dark-mode {
   color: #f5f5f5;
 }
 
-/* 3) کانتینر Quick/Pro */
+/* Container size: Quick 420×520, Pro +20% */
 .container {
   display: flex;
   flex-direction: column;
@@ -35,7 +36,6 @@ body.dark-mode {
   width: 420px;
   height: 520px;
   margin: 20px auto;
-  text-align: center;
   transition: width .4s, height .4s, background .3s;
 }
 body.dark-mode .container {
@@ -46,7 +46,7 @@ body.dark-mode .container {
   height: 624px;
 }
 
-/* 4) هدر */
+/* Header */
 .header {
   width: 100%;
   display: flex;
@@ -74,7 +74,7 @@ body.dark-mode .container {
   cursor: pointer;
 }
 
-/* 5) تاگل Quick/Pro */
+/* Plan toggle */
 .toggle-wrapper {
   display: flex;
   align-items: center;
@@ -119,7 +119,7 @@ body.dark-mode .container {
   transform: translateX(18px);
 }
 
-/* 6) Input + 🔎 */
+/* Search box */
 .input-wrapper {
   position: relative;
   width: 100%;
@@ -139,8 +139,8 @@ input[type="text"] {
   padding: 12px 12px 12px 44px;
   border: 1px solid #ddd;
   border-radius: 8px;
-  font-size: 16px;
   font-family: 'Vazirmatn', sans-serif;
+  font-size: 16px;
   color: inherit;
   background: #ffffff;
   transition: border-color .3s, background .3s;
@@ -153,7 +153,7 @@ body.dark-mode .search-icon {
   color: #ccc;
 }
 
-/* 7) Response area */
+/* Response area */
 pre {
   flex: 1;
   width: 100%;
@@ -161,30 +161,33 @@ pre {
   padding: 14px;
   margin: 0;
   border-radius: 8px;
-  font-size: 16px;
-  line-height: 1.5;
   overflow-y: auto;
   white-space: pre-wrap;
-  /* متن‌های انگلیسی از اینجا بطور پیش‌فرض سیستم */
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  font-weight: 400;
-  color: inherit;
+  transition: background .3s;
 }
 body.dark-mode pre {
   background: #444;
 }
 
-/* 8) ترازبندی هر خط و فونت بر اساس dir */
+/* Per-line styling */
 pre span {
   display: block;
+  margin-bottom: 8px;
   unicode-bidi: plaintext;
 }
+/* Emoji header: bold and larger */
+pre span.emoji-header {
+  font-size: 18px;
+  font-weight: 700;
+}
+/* Persian lines */
 pre span[dir="rtl"] {
   direction: rtl;
   text-align: right;
   font-family: 'Vazirmatn', sans-serif;
   font-weight: 400;
 }
+/* English lines */
 pre span[dir="ltr"] {
   direction: ltr;
   text-align: left;
@@ -192,7 +195,7 @@ pre span[dir="ltr"] {
   font-weight: 400;
 }
 
-/* 9) واکنش‌گرایی */
+/* Responsive */
 @media (max-width: 480px) {
   .container {
     width: 84vw;
