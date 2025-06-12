@@ -1,22 +1,29 @@
+/* 1) همه را با box-sizing: border-box */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* 2) فونت سیستم برای بدنه و فقط Vazirmatn برای ورودی و نتیجه */
 @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500&display=swap');
 
-html {
-  -webkit-text-size-adjust: 100%;
-  -ms-text-size-adjust: 100%;
-  text-size-adjust: 100%;
+html, body {
+  margin: 0;
+  padding: 0;
 }
 body {
-  margin: 0;
-  font-family: 'Vazirmatn', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   background-color: #ffffff;
-  color: #000;
-  transition: background-color 0.3s, color 0.3s;
+  color: #000000;
+  transition: background-color .3s, color .3s;
 }
 body.dark-mode {
   background-color: #1e1e1e;
   color: #f5f5f5;
 }
 
+/* کانتینر بدون ارتفاع ثابت */
 .container {
   display: flex;
   flex-direction: column;
@@ -28,21 +35,21 @@ body.dark-mode {
   width: 370px;
   margin: 20px auto;
   text-align: center;
-  transition: width 0.4s, background 0.3s;
-}
-.container.pro-mode {
-  width: 444px;
+  transition: width .4s, background .3s;
 }
 body.dark-mode .container {
   background: #2e2e2e;
 }
+.container.pro-mode {
+  width: 444px; /* +20% */
+}
 
-/* header */
+/* هدر */
 .header {
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
   margin-bottom: 12px;
 }
 .logo-name {
@@ -65,7 +72,7 @@ body.dark-mode .container {
   cursor: pointer;
 }
 
-/* toggle */
+/* تاگل Quick/Pro */
 .toggle-wrapper {
   display: flex;
   align-items: center;
@@ -77,24 +84,21 @@ body.dark-mode .container {
 }
 .switch {
   position: relative;
-  width: 42px;
-  height: 24px;
+  width: 42px; height: 24px;
 }
 .switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
+  opacity: 0; width: 0; height: 0;
 }
 .slider {
   position: absolute;
   top:0; left:0; right:0; bottom:0;
-  background-color: #ccc;
-  border-radius: 34px;
-  transition: .3s;
+  background:#ccc;
+  border-radius:34px;
+  transition:.3s;
 }
 .slider:before {
-  content: "";
-  position: absolute;
+  content:"";
+  position:absolute;
   width:18px; height:18px;
   left:3px; bottom:3px;
   background:#fff;
@@ -102,80 +106,74 @@ body.dark-mode .container {
   transition:.3s;
 }
 .switch input:checked + .slider {
-  background-color:#007AFF;
+  background:#007AFF;
 }
 .switch input:checked + .slider:before {
   transform: translateX(18px);
 }
 
-/* input + icon */
+/* ورودی + 🔎 */
 .input-wrapper {
   position: relative;
-  width:100%;
-  margin:12px 0 16px;
+  width: 100%;
+  margin: 12px 0 16px;
 }
 .search-icon {
   position: absolute;
-  left:16px;
-  top:50%;
+  left: 16px;
+  top: 50%;
   transform: translateY(-50%);
-  font-size:18px;
-  color:#888;
-  cursor:pointer;
+  font-size: 18px;
+  color: #888;
+  cursor: pointer;
 }
 input[type="text"] {
-  width:100%;
-  padding:12px 12px 12px 44px;
-  border:1px solid #ddd;
-  border-radius:8px;
-  font-size:16px;
-  color:inherit;
-  background:#fff;
-  transition:border-color .3s, background .3s;
+  width: 100%;
+  padding: 12px 12px 12px 44px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  font-family: 'Vazirmatn', sans-serif;
+  color: inherit;
+  background: #fff;
+  transition: border-color .3s, background .3s;
 }
 body.dark-mode input[type="text"] {
-  background:#3a3a3a;
-  border-color:#555;
+  background: #3a3a3a;
+  border-color: #555;
 }
 body.dark-mode .search-icon {
-  color:#ccc;
+  color: #ccc;
 }
 
 /* نتیجه */
 pre {
-  flex:1;
-  width:100%;
-  background:#f6f6f6;
-  padding:14px;
-  margin:0;
-  border-radius:8px;
-  font-size:16px;
-  line-height:1.5;
-  overflow-y:auto;
-  white-space:pre-wrap;
-  text-align:left;
-  font-family:'Vazirmatn',sans-serif;
-  font-weight:500;
-  color:inherit;
+  flex: 1;
+  width: 100%;
+  background: #f6f6f6;
+  padding: 14px;
+  margin: 0;
+  border-radius: 8px;
+  font-size: 16px;
+  line-height: 1.5;
+  overflow-y: auto;
+  white-space: pre-wrap;
+  text-align: left;
+  font-family: 'Vazirmatn', sans-serif;
+  font-weight: 500;
+  color: inherit;
 }
 body.dark-mode pre {
-  background:#444;
-}
-
-/* متن‌های سیاه → سفید در دارک */
-body.dark-mode .app-name,
-body.dark-mode .label,
-body.dark-mode .search-icon {
-  color:#f5f5f5;
+  background: #444;
 }
 
 /* واکنش‌گرایی */
-@media (max-width:480px) {
-  .container { width:84vw; padding:16px; box-shadow:none; }
-  .container.pro-mode { width:84vw; }
-  .logo { width:48px; height:48px; }
-  .app-name { font-size:22px; }
-  input[type="text"] { font-size:16px; }
-  pre { font-size:17px; line-height:1.7; }
-  .label { font-size:16px; }
+@media (max-width: 480px) {
+  .container { width: 84vw; padding: 16px; box-shadow: none; }
+  .container.pro-mode { width: 84vw; }
+  .logo { width: 48px; height: 48px; }
+  .app-name { font-size: 22px; }
+  input[type="text"] { font-size: 16px; }
+  pre { font-size: 17px; line-height: 1.7; }
+  .label { font-size: 16px; }
 }
