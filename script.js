@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const input      = document.getElementById('word-input');
   const result     = document.getElementById('result');
 
-  // URLهای جدید شما
+  // URLهای شما
   const QUICK_URL = 'https://celebrated-beauty-production.up.railway.app/webhook/dce640b0-1af0-48b4-b8bf-1bd6f5c6f9c3';
   const PRO_URL   = 'https://celebrated-beauty-production.up.railway.app/webhook/aee5dce3-dcef-4660-9e1b-668d7028fc1c';
 
@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (e.key === 'Enter') doSearch();
   });
 
-  // ارسال POST و خواندن پاسخ به‌صورت Text
+  // POST و خواندن پاسخ
   async function search(word) {
     result.textContent = 'Loading…';
     const url = planToggle.checked ? PRO_URL : QUICK_URL;
@@ -47,7 +47,11 @@ document.addEventListener('DOMContentLoaded', () => {
       });
       if (!res.ok) throw new Error(res.statusText || 'Load failed');
       const txt = await res.text();
-      result.textContent = txt;
+      // هر خط را wrap کن در <span dir="auto">
+      const lines = txt.split('\n');
+      result.innerHTML = lines
+        .map(line => `<span dir="auto">${line}</span>`)
+        .join('');
     } catch (err) {
       result.textContent = 'Error: ' + (err.message || 'Load failed');
     }
