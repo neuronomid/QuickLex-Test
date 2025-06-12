@@ -17,23 +17,15 @@ document.addEventListener('DOMContentLoaded', () => {
     container.classList.toggle('pro-mode', planToggle.checked);
   });
 
-  // Light ↔ Dark with immediate swap and rotate animation
+  // Light ↔ Dark with rotate animation
   themeIcon.addEventListener('click', () => {
     const enteringDark = !body.classList.contains('dark-mode');
-
-    // Immediately toggle theme classes
     body.classList.toggle('dark-mode', enteringDark);
     body.classList.toggle('light-mode', !enteringDark);
-
-    // Immediately swap the icon source so rotated icon is final
     themeIcon.src = enteringDark ? 'moon.svg' : 'sun.svg';
     themeIcon.alt = enteringDark ? 'Dark Mode' : 'Light Mode';
-
-    // Add corresponding rotation animation
     const animClass = enteringDark ? 'animate-sun' : 'animate-moon';
     themeIcon.classList.add(animClass);
-
-    // Remove animation class after it ends (no further swaps needed)
     themeIcon.addEventListener('animationend', function handler() {
       themeIcon.classList.remove(animClass);
       themeIcon.removeEventListener('animationend', handler);
@@ -45,6 +37,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const word = input.value.trim();
     if (!word) return;
     search(word);
+    // Clear input and blur to hide keyboard on mobile
+    input.value = '';
+    input.blur();
   }
   searchIcon.addEventListener('click', doSearch);
   input.addEventListener('keyup', e => {
@@ -63,10 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
       if (!res.ok) throw new Error(res.statusText || 'Load failed');
       let txt = await res.text();
-
-      // Insert newline before emoji lines
       txt = txt.replace(/(^|\n)(?=.*(?:✏️|☑️|⚪️))/g, '\n');
-
       const emojiPattern = /^(✏️|☑️|⚪️)/;
       const lines = txt.split('\n');
       result.innerHTML = lines.map(line => {
