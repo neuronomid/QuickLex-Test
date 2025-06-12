@@ -165,7 +165,7 @@ pre {
   margin: 0;
   border-radius: 8px;
   font-size: 16px;
-  line-height: 1.5;
+  line-height: 1.45;
   overflow-y: auto;
   white-space: pre-wrap;
   text-align: left;
@@ -179,18 +179,15 @@ pre span {
   font-family: 'Vazirmatn', sans-serif;
   text-align: start;
   font-weight: 500;
-  margin-top: 4px;
+  margin-top: 2px;
+}
+
+pre span.emoji-header {
+  margin-top: 6px !important; /* فاصله کمتر از خطوط معمولی */
 }
 
 pre span:first-child {
   margin-top: 0;
-}
-
-/* ==================================
-   فاصله بسیار کم برای خطوط ایموجی
-   ================================== */
-pre span.emoji-header {
-  margin-top: 0 px !important;
 }
 
 @media (max-width: 480px) {
@@ -227,7 +224,7 @@ pre span.emoji-header {
 
   pre {
     font-size: 17px;
-    line-height: 1.7;
+    line-height: 1.55;
     height: 20px;
     font-family: 'Vazirmatn', sans-serif;
     font-weight: 500;
@@ -257,11 +254,11 @@ pre span.emoji-header {
   }
 
   pre span {
-    margin-top: 2px;
+    margin-top: 1px;
   }
 
   pre span.emoji-header {
-    margin-top: 0 px !important;
+    margin-top: 3px !important;
   }
 
   pre span:first-child {
