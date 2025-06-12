@@ -29,13 +29,37 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 }
 
+.container.pro-mode {
+  width: 444px;
+  height: 624px;
+}
+
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
   margin-bottom: 12px;
-  gap: 6px;
+}
+
+.logo-name {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+.logo {
+  width: 64px;
+  height: 64px;
+  border-radius: 12px;
+}
+
+.app-name {
+  font-size: 26px;
+  font-weight: 700;
+  color: #222;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 }
 
 .mode-btn {
@@ -43,19 +67,77 @@ body {
   border: none;
   outline: none;
   cursor: pointer;
-  padding: 6px;
-  margin-left: 8px;
+  padding: 0 6px 0 6px;
+  margin-left: 10px;
+  margin-right: 0;
+  display: flex;
+  align-items: center;
   transition: transform 0.4s cubic-bezier(.6,2,.3,1);
 }
 
 .mode-btn img {
-  width: 36px;
-  height: 36px;
+  width: 32px;
+  height: 32px;
   transition: transform 0.4s cubic-bezier(.6,2,.3,1);
 }
 
-.mode-btn:active img {
-  transform: rotate(180deg) scale(1.2);
+.toggle-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+.label {
+  font-size: 15px;
+  font-weight: 700;
+  color: #333;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 42px;
+  height: 24px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.3s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.3s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #007aff;
+}
+
+input:checked + .slider:before {
+  transform: translateX(18px);
 }
 
 input[type="text"] {
@@ -76,12 +158,25 @@ pre {
   margin: 0;
   border-radius: 8px;
   font-size: 16px;
-  line-height: 1.25;
+  line-height: 1.2;
   overflow-y: auto;
   white-space: pre-wrap;
   text-align: left;
   font-family: 'Vazirmatn', sans-serif;
   font-weight: 500;
+}
+
+pre span {
+  display: block;
+  unicode-bidi: plaintext;
+  font-family: 'Vazirmatn', sans-serif;
+  text-align: start;
+  font-weight: 500;
+  margin-top: 2px;
+}
+
+pre span:first-child {
+  margin-top: 0;
 }
 
 /* دارک مود */
@@ -113,6 +208,5 @@ body.dark pre {
     padding: 16px;
     box-shadow: none;
   }
-  .mode-btn img { width: 32px; height: 32px; }
-  .header { gap: 2px; }
+  .mode-btn img { width: 28px; height: 28px; }
 }
