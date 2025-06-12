@@ -58,7 +58,6 @@ let darkMode = false;
 modeBtn.onclick = () => {
   darkMode = !darkMode;
   document.body.classList.toggle('dark', darkMode);
-
   // تغییر آیکون با انیمیشن
   modeIcon.style.transform = 'rotateY(90deg)';
   setTimeout(() => {
