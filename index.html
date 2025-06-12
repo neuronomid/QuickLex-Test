@@ -1,27 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>QuickLex</title>
-  <link rel="manifest" href="manifest.json">
-  <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.json"/>
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body class="light-mode">
   <div class="container" id="container">
     <div class="header">
-      <div class="branding">
-        <img src="logo-symbol.png" alt="QuickLex Logo" class="logo">
+      <div class="logo-name">
+        <img src="logo-symbol.png" alt="QuickLex Logo" class="logo"/>
         <span class="app-name">QuickLex</span>
       </div>
-      <img src="sun.svg" alt="Toggle Theme" id="theme-icon" class="theme-icon">
-      <div class="plan-toggle">
-        <span>Quick</span>
+      <img src="sun.svg" id="theme-icon" class="theme-icon" alt="Toggle Theme"/>
+      <div class="toggle-wrapper">
+        <span class="label">Quick</span>
         <label class="switch">
-          <input type="checkbox" id="plan-toggle">
+          <input type="checkbox" id="plan-toggle"/>
           <span class="slider"></span>
         </label>
-        <span>Pro</span>
+        <span class="label">Pro</span>
       </div>
     </div>
 
@@ -30,9 +30,14 @@
       id="word-input"
       placeholder="Enter a word in English/Farsi…"
       autocomplete="off"
-    >
+    />
 
-    <div id="result"></div>
+    <div class="buttons">
+      <button id="cancelBtn">Cancel</button>
+      <button id="doneBtn">Done</button>
+    </div>
+
+    <pre id="result"></pre>
   </div>
 
   <script src="script.js"></script>
