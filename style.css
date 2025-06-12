@@ -48,8 +48,8 @@ body.dark-mode .container {
   background: #2e2e2e;
 }
 .container.pro-mode {
-  width: 504px;   /* 420px +20% */
-  height: 624px;  /* 520px +20% */
+  width: 504px;   /* +20% */
+  height: 624px;
 }
 
 /* 6) Header */
@@ -75,7 +75,7 @@ body.dark-mode .container {
   font-weight: 700;
 }
 
-/* 7) Theme icon (15% larger + rotate animation) */
+/* 7) Theme icon */
 .theme-icon {
   width: 20px;
   height: 20px;
@@ -98,7 +98,7 @@ body.dark-mode .container {
   animation: rotate-moon-to-sun 0.6s forwards;
 }
 
-/* 8) Plan toggle Quick/Pro */
+/* 8) Plan toggle */
 .toggle-wrapper {
   display: flex;
   align-items: center;
@@ -121,12 +121,20 @@ body.dark-mode .container {
 .slider {
   position: absolute;
   top:0; left:0; right:0; bottom:0;
-  background:#ccc; border-radius:34px; transition:.3s;
+  background:#ccc;
+  border-radius:34px;
+  transition:.3s;
 }
 .slider:before {
-  content:""; position:absolute; width:18px; height:18px;
-  left:3px; bottom:3px;
-  background:#fff; border-radius:50%; transition:.3s;
+  content:"";
+  position:absolute;
+  width:18px;
+  height:18px;
+  left:3px;
+  bottom:3px;
+  background:#fff;
+  border-radius:50%;
+  transition:.3s;
 }
 .switch input:checked + .slider {
   background:#007AFF;
@@ -135,7 +143,7 @@ body.dark-mode .container {
   transform: translateX(18px);
 }
 
-/* 9) Search box + icon */
+/* 9) Search input */
 .input-wrapper {
   position: relative;
   width: 100%;
@@ -147,16 +155,25 @@ body.dark-mode .container {
   font-size:18px; color:#888; cursor:pointer;
 }
 input[type="text"] {
-  width:100%; padding:12px 12px 12px 44px;
-  border:1px solid #ddd; border-radius:8px;
-  font-family:'Vazirmatn',sans-serif; font-size:16px;
-  color:inherit; background:#fff;
+  width:100%;
+  padding:12px 12px 12px 44px;
+  border:1px solid #ddd;
+  border-radius:8px;
+  font-family:'Vazirmatn',sans-serif;
+  font-size:16px;
+  color:inherit;
+  background:#fff;
   transition:border-color .3s, background .3s;
 }
-body.dark-mode input[type="text"] { background:#3a3a3a; border-color:#555; }
-body.dark-mode .search-icon { color:#ccc; }
+body.dark-mode input[type="text"] {
+  background:#3a3a3a;
+  border-color:#555;
+}
+body.dark-mode .search-icon {
+  color:#ccc;
+}
 
-/* 10) Response area — Uniform font settings */
+/* 10) Response area - now text color changes in dark mode */
 pre {
   flex: 1;
   width: 100%;
@@ -164,7 +181,6 @@ pre {
   padding: 14px;
   margin: 0;
   border-radius: 8px;
-  /* Uniform font for all lines */
   font-family: 'Vazirmatn', sans-serif;
   font-style: normal;
   font-weight: 450;
@@ -173,7 +189,7 @@ pre {
   color: rgb(0, 0, 0);
   overflow-y: auto;
   white-space: pre-wrap;
-  transition: background .3s;
+  transition: background .3s, color .3s;
 }
 body.dark-mode pre {
   background: #444;
@@ -185,17 +201,16 @@ pre span {
   unicode-bidi: plaintext;
 }
 pre span.emoji-header {
-  /* Same as other lines, no extra bold or size */
   font-weight: 450;
   font-size: 16px;
 }
-pre span[dir="rtl"],
-pre span[dir="ltr"] {
-  /* Inherit same uniform font */
+pre span[dir="rtl"], pre span[dir="ltr"] {
   font-family: 'Vazirmatn', sans-serif;
   font-weight: 450;
   font-size: 16px;
   line-height: 24px;
+  direction: inherit;
+  text-align: inherit;
 }
 
 /* 11) Responsive */
