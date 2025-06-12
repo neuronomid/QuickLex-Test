@@ -1,37 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>QuickLex</title>
-  <link rel="manifest" href="manifest.json" />
-  <meta name="theme-color" content="#ffffff" />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="style.css">
 </head>
-<body>
-  <div class="container" id="mainContainer">
+<body class="light-mode">
+  <div class="container" id="container">
     <div class="header">
-      <div class="logo-name">
-        <img src="logo-symbol.png" alt="Logo" class="logo" />
-        <div class="app-name">QuickLex</div>
+      <div class="branding">
+        <img src="logo-symbol.png" alt="QuickLex Logo" class="logo">
+        <span class="app-name">QuickLex</span>
       </div>
-      <!-- دکمه لایت/دارک -->
-      <button id="modeBtn" class="mode-btn" aria-label="Toggle dark mode">
-        <img id="modeIcon" src="brightness_6716602.png" alt="Light mode" />
-      </button>
-      <!-- تاگل پرو -->
-      <div class="toggle-wrapper">
-        <span class="label">Quick</span>
+      <img src="sun.svg" alt="Toggle Theme" id="theme-icon" class="theme-icon">
+      <div class="plan-toggle">
+        <span>Quick</span>
         <label class="switch">
-          <input type="checkbox" id="modeToggle" />
+          <input type="checkbox" id="plan-toggle">
           <span class="slider"></span>
         </label>
-        <span class="label">Pro</span>
+        <span>Pro</span>
       </div>
     </div>
-    <input type="text" id="wordInput" placeholder="Enter a word in English/Farsi..." />
-    <pre id="responseArea"></pre>
+
+    <input
+      type="text"
+      id="word-input"
+      placeholder="Enter a word in English/Farsi…"
+      autocomplete="off"
+    >
+
+    <div id="result"></div>
   </div>
+
   <script src="script.js"></script>
 </body>
 </html>
