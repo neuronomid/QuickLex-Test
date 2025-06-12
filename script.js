@@ -32,18 +32,21 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { once: true });
   });
 
-  // Search on 🔎 click or Enter key
+  // Search on 🔎 click or Enter key (keydown for mobile)
   function doSearch() {
     const word = input.value.trim();
     if (!word) return;
     search(word);
-    // Clear input and blur to hide keyboard on mobile
+    // Clear input and blur to hide keyboard
     input.value = '';
     input.blur();
   }
   searchIcon.addEventListener('click', doSearch);
-  input.addEventListener('keyup', e => {
-    if (e.key === 'Enter') doSearch();
+  input.addEventListener('keydown', e => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      doSearch();
+    }
   });
 
   // Fetch definition/translation and render
@@ -58,6 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
       if (!res.ok) throw new Error(res.statusText || 'Load failed');
       let txt = await res.text();
+      // Insert newline before emoji lines
       txt = txt.replace(/(^|\n)(?=.*(?:✏️|☑️|⚪️))/g, '\n');
       const emojiPattern = /^(✏️|☑️|⚪️)/;
       const lines = txt.split('\n');
