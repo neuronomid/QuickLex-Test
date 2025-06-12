@@ -1,8 +1,9 @@
-/* حتماً همه را با border-box محاسبه کن */
+/* مرجع تمامی محاسبات با box-sizing */
 *, *::before, *::after {
   box-sizing: border-box;
 }
 
+/* فونت سیستم برای بدنه، Vazirmatn برای ورودی و نتیجه */
 @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500&display=swap');
 
 html, body {
@@ -19,17 +20,17 @@ body.dark-mode {
   color: #f5f5f5;
 }
 
-/* کانتینر با ارتفاع ثابت و پدینگ عمودی بیشتر */
+/* کانتینر: Quick = 420px، Pro = 504px */
 .container {
   display: flex;
   flex-direction: column;
   align-items: center;
   background: #fff;
-  padding: 32px 24px;       /* پدینگ عمودی بیشتر */
+  padding: 32px 24px;
   border-radius: 16px;
   box-shadow: 0 8px 24px rgba(0,0,0,0.12);
-  width: 370px;
-  height: 520px;            /* ارتفاع اولیه */
+  width: 420px;
+  height: 520px;
   margin: 20px auto;
   text-align: center;
   transition: width .4s, height .4s, background .3s;
@@ -37,11 +38,9 @@ body.dark-mode {
 body.dark-mode .container {
   background: #2e2e2e;
 }
-
-/* حالت Pro: +20% عرض و ارتفاع */
 .container.pro-mode {
-  width: 444px;   /* 370px +20% */
-  height: 624px;  /* 520px +20% */
+  width: 504px;   /* 420 + 20% */
+  height: 624px;  /* 520 + 20% */
 }
 
 /* هدر */
@@ -62,8 +61,7 @@ body.dark-mode .container {
   border-radius: 12px;
 }
 .app-name {
-  font-size: 26px;
-  font-weight: 700;
+  font-size: 26px; font-weight: 700;
 }
 .theme-icon {
   width: 20px; height: 20px;
@@ -89,16 +87,13 @@ body.dark-mode .container {
 .slider {
   position: absolute;
   top:0; left:0; right:0; bottom:0;
-  background:#ccc; border-radius:34px;
-  transition:.3s;
+  background:#ccc; border-radius:34px; transition:.3s;
 }
 .slider:before {
-  content:"";
-  position:absolute;
+  content:""; position:absolute;
   width:18px; height:18px;
   left:3px; bottom:3px;
-  background:#fff; border-radius:50%;
-  transition:.3s;
+  background:#fff; border-radius:50%; transition:.3s;
 }
 .switch input:checked + .slider {
   background:#007AFF;
@@ -111,14 +106,13 @@ body.dark-mode .container {
 .input-wrapper {
   position: relative;
   width: 100%;
-  margin-bottom: 24px;
+  margin: 12px 0 24px;
 }
 .search-icon {
   position: absolute;
   left: 16px; top: 50%;
   transform: translateY(-50%);
-  font-size: 18px; color: #888;
-  cursor: pointer;
+  font-size: 18px; color: #888; cursor: pointer;
 }
 input[type="text"] {
   width: 100%;
@@ -139,7 +133,7 @@ body.dark-mode .search-icon {
   color: #ccc;
 }
 
-/* باکس نتیجه */
+/* نتیجه: هر خط <span dir="auto"> */
 pre {
   flex: 1;
   width: 100%;
@@ -159,8 +153,13 @@ pre {
 body.dark-mode pre {
   background: #444;
 }
+/* هر <span> را بلاک کرده و جهت خودکار */
+pre span {
+  display: block;
+  unicode-bidi: plaintext;
+}
 
-/* واکنش‌گرایی */
+/* ریسپانسیو */
 @media (max-width: 480px) {
   .container {
     width: 84vw;
