@@ -216,8 +216,8 @@ pre span[dir="rtl"], pre span[dir="ltr"] {
 /* 11) Responsive */
 @media (max-width:480px) {
   /* Increase mobile width for easier tapping */
-  .container { width: 90vw; height: 90vh; padding:16px; box-shadow:none; }
-  .container.pro-mode { width: 90vw; height:108vh; }
+  .container { width: 96vw; height:90vh; padding:16px; box-shadow:none; }
+  .container.pro-mode { width: 96vw; height:108vh; }
   .logo { width:48px; height:48px; }
   .app-name { font-size:22px; }
   input[type="text"] { font-size:16px; }
