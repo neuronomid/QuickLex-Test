@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
     themeIcon.alt = isDark ? 'Dark Mode' : 'Light Mode';
   });
 
-  // Search on 🔎 click or Enter
+  // جستجو با 🔎 یا Enter
   function doSearch() {
     const word = input.value.trim();
     if (!word) return;
@@ -34,21 +34,18 @@ document.addEventListener('DOMContentLoaded', () => {
     if (e.key === 'Enter') doSearch();
   });
 
-  // fetch از URL مناسب
   async function search(word) {
     result.textContent = 'Loading…';
-    const url = planToggle.checked ? PRO_URL : QUICK_URL;
+    // GET به جای POST
+    const base = planToggle.checked ? PRO_URL : QUICK_URL;
+    const url  = `${base}?text=${encodeURIComponent(word)}`;
     try {
-      const res = await fetch(url, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ text: word })
-      });
+      const res = await fetch(url);
       if (!res.ok) throw new Error(res.statusText);
       const data = await res.json();
       result.textContent = data.result ?? JSON.stringify(data, null, 2);
     } catch (err) {
-      result.textContent = 'Error: Load failed';
+      result.textContent = 'Error: ' + err.message;
     }
   }
 });
