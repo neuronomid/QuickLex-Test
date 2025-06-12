@@ -17,24 +17,23 @@ document.addEventListener('DOMContentLoaded', () => {
     container.classList.toggle('pro-mode', planToggle.checked);
   });
 
-  // Light ↔ Dark with spin animation
+  // Light ↔ Dark with immediate theme toggle and rotate animation
   themeIcon.addEventListener('click', () => {
     const enteringDark = !body.classList.contains('dark-mode');
-    // choose animation class
-    const anim = enteringDark ? 'animate-sun' : 'animate-moon';
-    themeIcon.classList.add(anim);
+    // Immediately toggle the theme
+    body.classList.toggle('dark-mode', enteringDark);
+    body.classList.toggle('light-mode', !enteringDark);
 
+    // Choose animation class
+    const animClass = enteringDark ? 'animate-sun' : 'animate-moon';
+    themeIcon.classList.add(animClass);
+
+    // When rotation animation ends, swap the icon image
     themeIcon.addEventListener('animationend', function handler() {
-      themeIcon.classList.remove(anim);
       themeIcon.removeEventListener('animationend', handler);
-
-      // toggle theme
-      const isNowDark = body.classList.toggle('dark-mode');
-      body.classList.toggle('light-mode', !isNowDark);
-
-      // swap icon
-      themeIcon.src = isNowDark ? 'moon.svg' : 'sun.svg';
-      themeIcon.alt = isNowDark ? 'Dark Mode' : 'Light Mode';
+      themeIcon.classList.remove(animClass);
+      themeIcon.src = enteringDark ? 'moon.svg' : 'sun.svg';
+      themeIcon.alt = enteringDark ? 'Dark Mode' : 'Light Mode';
     }, { once: true });
   });
 
