@@ -1,21 +1,17 @@
-/* 1) همه را با box-sizing: border-box */
-*,
-*::before,
-*::after {
+/* حتماً همه را با border-box محاسبه کن */
+*, *::before, *::after {
   box-sizing: border-box;
 }
 
-/* 2) فونت سیستم برای بدنه و فقط Vazirmatn برای ورودی و نتیجه */
 @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500&display=swap');
 
 html, body {
-  margin: 0;
-  padding: 0;
+  margin: 0; padding: 0;
 }
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   background-color: #ffffff;
-  color: #000000;
+  color: #000;
   transition: background-color .3s, color .3s;
 }
 body.dark-mode {
@@ -23,25 +19,29 @@ body.dark-mode {
   color: #f5f5f5;
 }
 
-/* کانتینر بدون ارتفاع ثابت */
+/* کانتینر با ارتفاع ثابت و پدینگ عمودی بیشتر */
 .container {
   display: flex;
   flex-direction: column;
   align-items: center;
   background: #fff;
-  padding: 24px;
+  padding: 32px 24px;       /* پدینگ عمودی بیشتر */
   border-radius: 16px;
   box-shadow: 0 8px 24px rgba(0,0,0,0.12);
   width: 370px;
+  height: 520px;            /* ارتفاع اولیه */
   margin: 20px auto;
   text-align: center;
-  transition: width .4s, background .3s;
+  transition: width .4s, height .4s, background .3s;
 }
 body.dark-mode .container {
   background: #2e2e2e;
 }
+
+/* حالت Pro: +20% عرض و ارتفاع */
 .container.pro-mode {
-  width: 444px; /* +20% */
+  width: 444px;   /* 370px +20% */
+  height: 624px;  /* 520px +20% */
 }
 
 /* هدر */
@@ -50,7 +50,7 @@ body.dark-mode .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 12px;
+  margin-bottom: 20px;
 }
 .logo-name {
   display: flex;
@@ -58,8 +58,7 @@ body.dark-mode .container {
   gap: 8px;
 }
 .logo {
-  width: 64px;
-  height: 64px;
+  width: 64px; height: 64px;
   border-radius: 12px;
 }
 .app-name {
@@ -67,8 +66,7 @@ body.dark-mode .container {
   font-weight: 700;
 }
 .theme-icon {
-  width: 20px;
-  height: 20px;
+  width: 20px; height: 20px;
   cursor: pointer;
 }
 
@@ -79,8 +77,7 @@ body.dark-mode .container {
   gap: 6px;
 }
 .label {
-  font-size: 15px;
-  font-weight: 700;
+  font-size: 15px; font-weight: 700;
 }
 .switch {
   position: relative;
@@ -92,8 +89,7 @@ body.dark-mode .container {
 .slider {
   position: absolute;
   top:0; left:0; right:0; bottom:0;
-  background:#ccc;
-  border-radius:34px;
+  background:#ccc; border-radius:34px;
   transition:.3s;
 }
 .slider:before {
@@ -101,8 +97,7 @@ body.dark-mode .container {
   position:absolute;
   width:18px; height:18px;
   left:3px; bottom:3px;
-  background:#fff;
-  border-radius:50%;
+  background:#fff; border-radius:50%;
   transition:.3s;
 }
 .switch input:checked + .slider {
@@ -112,19 +107,17 @@ body.dark-mode .container {
   transform: translateX(18px);
 }
 
-/* ورودی + 🔎 */
+/* ورودی + آیکون 🔎 */
 .input-wrapper {
   position: relative;
   width: 100%;
-  margin: 12px 0 16px;
+  margin-bottom: 24px;
 }
 .search-icon {
   position: absolute;
-  left: 16px;
-  top: 50%;
+  left: 16px; top: 50%;
   transform: translateY(-50%);
-  font-size: 18px;
-  color: #888;
+  font-size: 18px; color: #888;
   cursor: pointer;
 }
 input[type="text"] {
@@ -146,7 +139,7 @@ body.dark-mode .search-icon {
   color: #ccc;
 }
 
-/* نتیجه */
+/* باکس نتیجه */
 pre {
   flex: 1;
   width: 100%;
@@ -169,7 +162,12 @@ body.dark-mode pre {
 
 /* واکنش‌گرایی */
 @media (max-width: 480px) {
-  .container { width: 84vw; padding: 16px; box-shadow: none; }
+  .container {
+    width: 84vw;
+    height: auto;
+    padding: 16px;
+    box-shadow: none;
+  }
   .container.pro-mode { width: 84vw; }
   .logo { width: 48px; height: 48px; }
   .app-name { font-size: 22px; }
