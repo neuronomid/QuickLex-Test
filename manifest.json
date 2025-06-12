@@ -3,8 +3,8 @@
   "short_name": "QuickLex",
   "start_url": ".",
   "display": "standalone",
+  "theme_color": "#0078d4",
   "background_color": "#ffffff",
-  "theme_color": "#ffffff",
   "icons": [
     {
       "src": "logo-symbol.png",
