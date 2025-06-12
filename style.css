@@ -114,7 +114,9 @@ body.dark-mode .container {
   height: 24px;
 }
 .switch input {
-  opacity: 0; width: 0; height: 0;
+  opacity: 0;
+  width: 0;
+  height: 0;
 }
 .slider {
   position: absolute;
@@ -154,7 +156,7 @@ input[type="text"] {
 body.dark-mode input[type="text"] { background:#3a3a3a; border-color:#555; }
 body.dark-mode .search-icon { color:#ccc; }
 
-/* 10) Response area — UPDATED FONT SETTINGS */
+/* 10) Response area — UPDATED FONT SETTINGS per your info */
 pre {
   flex: 1;
   width: 100%;
@@ -162,16 +164,12 @@ pre {
   padding: 14px;
   margin: 0;
   border-radius: 8px;
-  /* Font per your spec:
-     Family: Vazirmatn, sans-serif
-     Weight: 500
-     Size: 16px
-     Line-height: 24px */
-  font-family: 'Vazirmatn', sans-serif;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 24px;
-  color: inherit;
+  font-family: 'Vazirmatn', sans-serif; /* Family */
+  font-style: normal;                  /* Style */
+  font-weight: 450;                    /* Weight */
+  font-size: 16px;                     /* Size */
+  line-height: 24px;                   /* Line Height */
+  color: rgb(0, 0, 0);                 /* Color */
   overflow-y: auto;
   white-space: pre-wrap;
   transition: background .3s;
@@ -179,23 +177,19 @@ pre {
 body.dark-mode pre {
   background: #444;
 }
-
 pre span {
   display: block;
   margin-bottom: 8px;
   unicode-bidi: plaintext;
 }
-
 pre span.emoji-header {
   font-size: 18px;
   font-weight: 700;
 }
-
 pre span[dir="rtl"] {
   direction: rtl;
   text-align: right;
 }
-
 pre span[dir="ltr"] {
   direction: ltr;
   text-align: left;
@@ -203,11 +197,32 @@ pre span[dir="ltr"] {
 
 /* 11) Responsive */
 @media (max-width:480px) {
-  .container { width:84vw; height:90vh; padding:16px; box-shadow:none; }
-  .container.pro-mode { width:84vw; height:108vh; }
-  .logo { width:48px; height:48px; }
-  .app-name { font-size:22px; }
-  input[type="text"] { font-size:16px; }
-  pre { font-size:16px; line-height:24px; }
-  .label { font-size:16px; }
+  .container {
+    width:84vw;
+    height:90vh;
+    padding:16px;
+    box-shadow:none;
+  }
+  .container.pro-mode {
+    width:84vw;
+    height:108vh;
+  }
+  .logo {
+    width:48px;
+    height:48px;
+  }
+  .app-name {
+    font-size:22px;
+  }
+  input[type="text"] {
+    font-size:16px;
+  }
+  pre {
+    font-size:16px;
+    line-height:24px;
+  }
+  .label {
+    font-size:16px;
+  }
 }
+```
