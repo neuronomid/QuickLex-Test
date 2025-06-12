@@ -7,8 +7,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const input      = document.getElementById('word-input');
   const result     = document.getElementById('result');
 
-  const QUICK_URL = 'https://celebrated-beauty-production.up.railway.app/webhook/dce640b0-1af0-48b4-b8bf-1bd6f5c6f9c3';
-  const PRO_URL   = 'https://celebrated-beauty-production.up.railway.app/webhook/aee5dce3-dcef-4660-9e1b-668d7028fc1c';
+  // آدرس‌های Test URL
+  const QUICK_URL = 'https://celebrated-beauty-production.up.railway.app/webhook-test/dce640b0-1af0-48b4-b8bf-1bd6f5c6f9c3';
+  const PRO_URL   = 'https://celebrated-beauty-production.up.railway.app/webhook-test/aee5dce3-dcef-4660-9e1b-668d7028fc1c';
 
   // Quick ↔ Pro
   planToggle.addEventListener('change', () => {
@@ -34,21 +35,22 @@ document.addEventListener('DOMContentLoaded', () => {
     if (e.key === 'Enter') doSearch();
   });
 
-  // ارسال POST به وبهوک
+  // POST به Test webhook
   async function search(word) {
     result.textContent = 'Loading…';
     const url = planToggle.checked ? PRO_URL : QUICK_URL;
     try {
       const res = await fetch(url, {
         method: 'POST',
+        mode: 'cors',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ text: word })
       });
-      if (!res.ok) throw new Error(res.statusText);
+      if (!res.ok) throw new Error(res.statusText || 'Load failed');
       const data = await res.json();
       result.textContent = data.result ?? JSON.stringify(data, null, 2);
     } catch (err) {
-      result.textContent = 'Error: Load failed';
+      result.textContent = 'Error: ' + (err.message || 'Load failed');
     }
   }
 });
