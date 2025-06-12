@@ -18,7 +18,7 @@ body.light-mode {
 }
 
 body.dark-mode {
-  background-color: #1e1e1e;
+  background-color: #1e1ee;
   color: #f5f5f5;
 }
 
@@ -29,7 +29,7 @@ body.dark-mode {
   background: white;
   padding: 24px;
   border-radius: 16px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
   width: 370px;
   height: 520px;
   margin: 20px auto;
@@ -59,7 +59,6 @@ body.dark-mode .container {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 }
 
 .logo {
@@ -72,21 +71,24 @@ body.dark-mode .container {
   font-size: 26px;
   font-weight: 700;
   color: #222;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+.theme-icon {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
 }
 
 .toggle-wrapper {
   display: flex;
   align-items: center;
   gap: 6px;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 }
 
 .label {
   font-size: 15px;
   font-weight: 700;
   color: #333;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 }
 
 .switch {
@@ -131,7 +133,6 @@ body.dark-mode .container {
   transform: translateX(18px);
 }
 
-/* search input + icon */
 .input-wrapper {
   position: relative;
   width: 100%;
@@ -150,7 +151,7 @@ body.dark-mode .container {
 
 input[type="text"] {
   width: 100%;
-  padding: 12px 12px 12px 44px; /* left padding for 🔎 */
+  padding: 12px 12px 12px 44px; /* جا برای 🔎 */
   border: 1px solid #ddd;
   border-radius: 8px;
   font-size: 16px;
@@ -171,34 +172,4 @@ pre {
   text-align: left;
   font-family: 'Vazirmatn', sans-serif;
   font-weight: 500;
-}
-
-@media (max-width: 480px) {
-  .container {
-    width: 84vw;
-    height: 90vh;
-    padding: 16px;
-    box-shadow: none;
-  }
-  .container.pro-mode {
-    height: 108vh;
-    width: 84vw;
-  }
-  .logo {
-    width: 48px;
-    height: 48px;
-  }
-  .app-name {
-    font-size: 22px;
-  }
-  input[type="text"] {
-    font-size: 16px;
-  }
-  pre {
-    font-size: 17px;
-    line-height: 1.7;
-  }
-  .label {
-    font-size: 16px;
-  }
 }
