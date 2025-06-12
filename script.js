@@ -8,6 +8,7 @@ const container    = document.getElementById('mainContainer');
 const modeBtn      = document.getElementById('modeBtn');
 const modeIcon     = document.getElementById('modeIcon');
 
+// تابع برای جستجو
 async function doFetch() {
   const word = input.value.trim();
   if (!word) return;
@@ -39,6 +40,7 @@ async function doFetch() {
   }
 }
 
+// فقط با زدن Enter سرچ انجام شود
 input.addEventListener('keydown', e => {
   if (e.key === 'Enter') {
     e.preventDefault();
