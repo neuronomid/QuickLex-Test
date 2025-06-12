@@ -7,16 +7,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const input      = document.getElementById('word-input');
   const result     = document.getElementById('result');
 
-  // URLهای شما
   const QUICK_URL = 'https://celebrated-beauty-production.up.railway.app/webhook/dce640b0-1af0-48b4-b8bf-1bd6f5c6f9c3';
   const PRO_URL   = 'https://celebrated-beauty-production.up.railway.app/webhook/aee5dce3-dcef-4660-9e1b-668d7028fc1c';
 
-  // Quick ↔ Pro
   planToggle.addEventListener('change', () => {
     container.classList.toggle('pro-mode', planToggle.checked);
   });
 
-  // Light ↔ Dark
   themeIcon.addEventListener('click', () => {
     const isDark = body.classList.toggle('dark-mode');
     body.classList.toggle('light-mode', !isDark);
@@ -24,7 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
     themeIcon.alt = isDark ? 'Dark Mode' : 'Light Mode';
   });
 
-  // جستجو با 🔎 یا Enter
   function doSearch() {
     const word = input.value.trim();
     if (!word) return;
@@ -35,7 +31,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (e.key === 'Enter') doSearch();
   });
 
-  // POST و خواندن پاسخ
   async function search(word) {
     result.textContent = 'Loading…';
     const url = planToggle.checked ? PRO_URL : QUICK_URL;
@@ -47,11 +42,16 @@ document.addEventListener('DOMContentLoaded', () => {
       });
       if (!res.ok) throw new Error(res.statusText || 'Load failed');
       const txt = await res.text();
-      // هر خط را wrap کن در <span dir="auto">
+
+      // اینجا فقط RTL/Farsi رو تشخیص می‌ده و برای هر سطر dir تنظیم می‌کنه
       const lines = txt.split('\n');
       result.innerHTML = lines
-        .map(line => `<span dir="auto">${line}</span>`)
+        .map(line => {
+          const isRTL = /[\u0600-\u06FF]/.test(line);
+          return `<span dir="${isRTL ? 'rtl' : 'ltr'}">${line}</span>`;
+        })
         .join('');
+
     } catch (err) {
       result.textContent = 'Error: ' + (err.message || 'Load failed');
     }
