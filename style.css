@@ -43,8 +43,8 @@ body.dark-mode .container {
 }
 
 .container.pro-mode {
-  width: 444px;
-  height: 624px;
+  width: 444px;   /* +20% */
+  height: 624px;  /* +20% */
 }
 
 .header {
@@ -131,41 +131,30 @@ body.dark-mode .container {
   transform: translateX(18px);
 }
 
-input[type="text"] {
-  width: 100%;
-  padding: 12px;
-  margin: 8px 0 16px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  font-size: 16px;
-  font-family: 'Vazirmatn', sans-serif;
-}
-
-.buttons {
-  display: flex;
-  gap: 12px;
+/* search input + icon */
+.input-wrapper {
+  position: relative;
   width: 100%;
   margin-bottom: 16px;
 }
 
-button {
-  flex: 1;
-  padding: 12px;
-  border: none;
-  border-radius: 8px;
+.search-icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
   cursor: pointer;
+  font-size: 18px;
+  color: #888;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 12px 12px 12px 44px; /* left padding for 🔎 */
+  border: 1px solid #ddd;
+  border-radius: 8px;
   font-size: 16px;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-}
-
-#cancelBtn {
-  background: #e9e9eb;
-  color: #333;
-}
-
-#doneBtn {
-  background: #007AFF;
-  color: #fff;
+  font-family: 'Vazirmatn', sans-serif;
 }
 
 pre {
@@ -182,4 +171,34 @@ pre {
   text-align: left;
   font-family: 'Vazirmatn', sans-serif;
   font-weight: 500;
+}
+
+@media (max-width: 480px) {
+  .container {
+    width: 84vw;
+    height: 90vh;
+    padding: 16px;
+    box-shadow: none;
+  }
+  .container.pro-mode {
+    height: 108vh;
+    width: 84vw;
+  }
+  .logo {
+    width: 48px;
+    height: 48px;
+  }
+  .app-name {
+    font-size: 22px;
+  }
+  input[type="text"] {
+    font-size: 16px;
+  }
+  pre {
+    font-size: 17px;
+    line-height: 1.7;
+  }
+  .label {
+    font-size: 16px;
+  }
 }
