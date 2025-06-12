@@ -1,24 +1,23 @@
 /* style.css */
 
-/* 1) همه چیز با box-sizing محاسبه شود */
+/* Box sizing globally */
 *, *::before, *::after {
   box-sizing: border-box;
 }
 
-/* 2) فونت‌های import */
+/* Import Persian font */
 @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500&display=swap');
 
-/* اندازه صحیح متن روی موبایل */
 html {
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
   text-size-adjust: 100%;
-}
-
-/* بدنه با فونت فارسی */
-body {
   margin: 0;
-  font-family: 'Vazirmatn', sans-serif;
+  padding: 0;
+}
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 16px;
   background-color: #ffffff;
   color: #000000;
   transition: background-color .3s, color .3s;
@@ -28,7 +27,7 @@ body.dark-mode {
   color: #f5f5f5;
 }
 
-/* کانتینر با فونت سیستم برای متن انگلیسی */
+/* Container: Quick 420×520, Pro +20% */
 .container {
   display: flex;
   flex-direction: column;
@@ -41,7 +40,6 @@ body.dark-mode {
   height: 520px;
   margin: 20px auto;
   transition: width .4s, height .4s, background .3s;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 }
 body.dark-mode .container {
   background: #2e2e2e;
@@ -51,7 +49,7 @@ body.dark-mode .container {
   height: 624px;
 }
 
-/* هدر */
+/* Header */
 .header {
   width: 100%;
   display: flex;
@@ -63,7 +61,6 @@ body.dark-mode .container {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 }
 .logo {
   width: 64px;
@@ -73,8 +70,6 @@ body.dark-mode .container {
 .app-name {
   font-size: 26px;
   font-weight: 700;
-  color: #222;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 }
 .theme-icon {
   width: 20px;
@@ -82,18 +77,15 @@ body.dark-mode .container {
   cursor: pointer;
 }
 
-/* تاگل Quick/Pro */
+/* Plan toggle */
 .toggle-wrapper {
   display: flex;
   align-items: center;
   gap: 6px;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 }
 .label {
   font-size: 15px;
   font-weight: 700;
-  color: #333;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 }
 .switch {
   position: relative;
@@ -124,13 +116,13 @@ body.dark-mode .container {
   transition: .3s;
 }
 .switch input:checked + .slider {
-  background-color: #007aff;
+  background-color: #007AFF;
 }
 .switch input:checked + .slider:before {
   transform: translateX(18px);
 }
 
-/* جعبه جستجو */
+/* Search box */
 .input-wrapper {
   position: relative;
   width: 100%;
@@ -152,7 +144,6 @@ input[type="text"] {
   border-radius: 8px;
   font-size: 16px;
   font-family: 'Vazirmatn', sans-serif;
-  margin: 8px 0 16px;
 }
 body.dark-mode input[type="text"] {
   background: #3a3a3a;
@@ -162,7 +153,7 @@ body.dark-mode .search-icon {
   color: #ccc;
 }
 
-/* بخش پاسخ */
+/* Response area */
 pre {
   flex: 1;
   width: 100%;
@@ -174,35 +165,46 @@ pre {
   line-height: 1.5;
   overflow-y: auto;
   white-space: pre-wrap;
-  text-align: left;
-  font-family: 'Vazirmatn', sans-serif;
-  font-weight: 500;
+  transition: background .3s;
+  font-weight: 400;
+  font-family: 'Vazirmatn', sans-serif; /* default Persian font for mixed content */
+}
+body.dark-mode pre {
+  background: #444;
 }
 
+/* Per-line styling */
 pre span {
   display: block;
+  margin-bottom: 8px;
   unicode-bidi: plaintext;
-  font-family: 'Vazirmatn', sans-serif;
-  font-weight: 500;
-  margin-top: 4px;
-}
-pre span:first-child {
-  margin-top: 0;
 }
 pre span.emoji-header {
-  margin-top: 0 !important;
+  font-size: 18px;
+  font-weight: 700;
+}
+pre span[dir="rtl"] {
+  direction: rtl;
+  text-align: right;
+  font-family: 'Vazirmatn', sans-serif;
+  font-weight: 400;
+}
+pre span[dir="ltr"] {
+  direction: ltr;
+  text-align: left;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 400;
 }
 
-/* واکنش‌گرایی */
+/* Responsive */
 @media (max-width: 480px) {
   .container {
     width: 84vw;
-    height: 90vh;
+    height: auto;
     padding: 16px;
     box-shadow: none;
   }
   .container.pro-mode {
-    height: 108vh;
     width: 84vw;
   }
   .logo {
@@ -215,26 +217,11 @@ pre span.emoji-header {
   input[type="text"] {
     font-size: 16px;
   }
-  .label {
-    font-size: 16px;
-    font-weight: 700;
-  }
-  .switch {
-    width: 48px;
-    height: 28px;
-  }
-  .slider:before {
-    height: 22px;
-    width: 22px;
-  }
   pre {
     font-size: 17px;
     line-height: 1.7;
   }
-  pre span {
-    margin-top: 2px;
-  }
-  pre span:first-child {
-    margin-top: 0;
+  .label {
+    font-size: 16px;
   }
 }
