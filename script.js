@@ -34,18 +34,21 @@ document.addEventListener('DOMContentLoaded', () => {
     if (e.key === 'Enter') doSearch();
   });
 
+  // ارسال POST به وبهوک
   async function search(word) {
     result.textContent = 'Loading…';
-    // GET به جای POST
-    const base = planToggle.checked ? PRO_URL : QUICK_URL;
-    const url  = `${base}?text=${encodeURIComponent(word)}`;
+    const url = planToggle.checked ? PRO_URL : QUICK_URL;
     try {
-      const res = await fetch(url);
+      const res = await fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ text: word })
+      });
       if (!res.ok) throw new Error(res.statusText);
       const data = await res.json();
       result.textContent = data.result ?? JSON.stringify(data, null, 2);
     } catch (err) {
-      result.textContent = 'Error: ' + err.message;
+      result.textContent = 'Error: Load failed';
     }
   }
 });
